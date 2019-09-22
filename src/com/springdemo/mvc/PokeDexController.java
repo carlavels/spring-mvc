@@ -1,10 +1,9 @@
 package com.springdemo.mvc;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pokedex.PokeDexSearch;
 
@@ -17,13 +16,14 @@ public class PokeDexController {
 	}
 	
 	@RequestMapping("/showPokemon")
-	public String showPokemonView(HttpServletRequest request, Model model) {
+	public String showPokemonView(@RequestParam("pokemonName") String pokemonName, Model model) {
+		// Using @RequestParam instead of HTTPServletRequest to get input from form
 		
 		//Instantiate PokeDex search class
 		PokeDexSearch pokeDexSearch = new PokeDexSearch();
 		
 		//Get the user input pokemon name from request
-		final String pokemonName = request.getParameter("pokemonName").toUpperCase();
+		pokemonName = pokemonName.toUpperCase();
 		
 		//Pass input pokemon name to PokeDex, return the image path
 		final String pokemonImagePath = pokeDexSearch.lookUpPokemon(pokemonName);
