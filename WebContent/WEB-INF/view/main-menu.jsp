@@ -18,5 +18,9 @@
 		<br><br>
 		<a href="searchPokemon">PokeDex</a>
 		
+		<!-- break new line -->
+		<br><br>
+		<a href="personHomepage">Sample Person</a>
+		
 	</body>
 </html>
